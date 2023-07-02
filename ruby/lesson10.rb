@@ -7,5 +7,5 @@ end
 class Taxi < Car
 end
 
-taxi = Taxi.new
+ = Taxi.new
 taxi.run(5)
