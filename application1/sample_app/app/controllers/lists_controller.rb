@@ -5,12 +5,16 @@ class ListsController < ApplicationController
   
   def create
     # １．&２．データを受け取り新規登録するためのインスタンス生成
-    list = List.new(list_params)
+    @list = List.new(list_params)
     # ３．データをデータベースに保存するためのsaveメソッド実行
-    list.save
-    # ４．トップ画面へリダイレクト
-    # redirect_to '/top'
-    redirect_to list_path(list.id)
+    if @list.save
+      # ４．トップ画面へリダイレクト
+      # redirect_to '/top'
+      redirect_to list_path(@list.id)
+    else
+      @lists = List.all
+      render :index
+    end
   end
   
   def index
