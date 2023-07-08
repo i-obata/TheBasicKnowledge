@@ -10,9 +10,9 @@ class ListsController < ApplicationController
     if @list.save
       # ４．トップ画面へリダイレクト
       # redirect_to '/top'
+      flash[:notice] = "投稿が成功しました"
       redirect_to list_path(@list.id)
     else
-      @lists = List.all
       render :index
     end
   end
